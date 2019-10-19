@@ -9,6 +9,7 @@
   },
   "homepage": "http://phuocantd.github.io/game-caro",
   "scripts": {
+    "precommit": "SET NODE_ENV=production lint-staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -32,6 +33,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "gh-pages": "^2.1.1",
+    "prettier": "^1.18.2"
   }
 }
