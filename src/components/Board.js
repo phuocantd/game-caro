@@ -1,5 +1,5 @@
-import React from 'react';
-import Square from './Square';
+import React from "react";
+import Square from "./Square";
 
 export default class Board extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class Board extends React.Component {
             .map(() => ({ isDark: false, isWin: false, isList: false }))
         ),
       xIsNext: true,
-      status: 'Next player: X',
+      status: "Next player: X",
       isWinner: false,
       preRowDark: { x: 0, y: 0 },
       historys: [],
@@ -31,50 +31,8 @@ export default class Board extends React.Component {
     this.checkWinner = this.checkWinner.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.reverseArray = this.reverseArray.bind(this);
-    this.renderSquare = this.renderSquare.bind(this);
-    this.getArray = this.getArray.bind(this);
     this.resetGame = this.resetGame.bind(this);
     this.clickList = this.clickList.bind(this);
-  }
-
-  getArray(number) {
-    let count = 0;
-    const arr = [];
-    let arrTmp = [];
-
-    arrTmp.push(
-      <button type='button' className='square' key={0}>
-        {}
-      </button>
-    );
-    for (let i = 0; i < number; i += 1) {
-      arrTmp.push(
-        <button type='button' className='square' key={i + 1}>
-          {String.fromCharCode(i + 65)}
-        </button>
-      );
-    }
-    arr.push(arrTmp);
-
-    for (let i = 0; i < number; i += 1) {
-      arrTmp = [];
-      arrTmp.push(
-        <button type='button' className='square' key={-1}>
-          {i + 1}
-        </button>
-      );
-      for (let j = 0; j < number; j += 1) {
-        arrTmp.push(this.renderSquare(count));
-        count += 1;
-      }
-      arr.push(
-        <div className="board-row" key={i}>
-          {arrTmp}
-        </div>
-      );
-    }
-
-    return arr;
   }
 
   reverseArray = () => {
@@ -92,13 +50,11 @@ export default class Board extends React.Component {
     }
   };
 
-  checkRow(i) {
+  checkRow(row, col) {
     const { size } = this.props;
     const { square } = this.state;
     let block = 0;
     let count = 1;
-    const row = Math.floor(i / size);
-    const col = i % size;
     const squares = square.slice();
     let k = col + 1;
 
@@ -131,13 +87,11 @@ export default class Board extends React.Component {
     return null;
   }
 
-  checkCol(i) {
+  checkCol(row, col) {
     const { size } = this.props;
     const { square } = this.state;
     let block = 0;
     let count = 1;
-    const row = Math.floor(i / size);
-    const col = i % size;
     const squares = square.slice();
     let k = row + 1;
     if (
@@ -185,13 +139,11 @@ export default class Board extends React.Component {
     return null;
   }
 
-  checkSlash(i) {
+  checkSlash(row, col) {
     const { size } = this.props;
     const { square } = this.state;
     let block = 0;
     let count = 1;
-    const row = Math.floor(i / size);
-    const col = i % size;
     const squares = square.slice();
     let r = row - 1;
     let c = col + 1;
@@ -247,13 +199,11 @@ export default class Board extends React.Component {
     return null;
   }
 
-  checkBackSlash(i) {
+  checkBackSlash(row, col) {
     const { size } = this.props;
     const { square } = this.state;
     let block = 0;
     let count = 1;
-    const row = Math.floor(i / size);
-    const col = i % size;
     const squares = square.slice();
     let r = row - 1;
     let c = col - 1;
@@ -309,27 +259,27 @@ export default class Board extends React.Component {
     return null;
   }
 
-  checkWinner(i) {
-    let isWin = this.checkRow(i);
+  checkWinner(row, col) {
+    let isWin = this.checkRow(row, col);
     if (isWin !== null) {
       return isWin;
     }
-    isWin = this.checkCol(i);
+    isWin = this.checkCol(row, col);
     if (isWin !== null) {
       return isWin;
     }
-    isWin = this.checkSlash(i);
+    isWin = this.checkSlash(row, col);
     if (isWin !== null) {
       return isWin;
     }
-    isWin = this.checkBackSlash(i);
+    isWin = this.checkBackSlash(row, col);
     if (isWin !== null) {
       return isWin;
     }
     return null;
   }
 
-  handleClick(i) {
+  handleClick(row, col) {
     const { size } = this.props;
     const {
       square,
@@ -341,8 +291,6 @@ export default class Board extends React.Component {
       stepCurrent,
       preRowDark
     } = this.state;
-    const row = Math.floor(i / size);
-    const col = i % size;
     let k = 0;
     let r = 0;
     let c = 0;
@@ -368,13 +316,13 @@ export default class Board extends React.Component {
     }
 
     if (isForward) {
-      history.push({ x: row, y: col, player: xIsNext ? 'X' : 'O' });
+      history.push({ x: row, y: col, player: xIsNext ? "X" : "O" });
       this.clickList(stepCurrent + 1);
     } else {
       history.unshift({
         x: row,
         y: col,
-        player: xIsNext ? 'X' : 'O'
+        player: xIsNext ? "X" : "O"
       });
       this.clickList(0);
     }
@@ -385,12 +333,12 @@ export default class Board extends React.Component {
     className[preRowDark.x][preRowDark.y].isDark = false;
     className[row][col].isDark = true;
 
-    squares[row][col] = xIsNext ? 'X' : 'O';
+    squares[row][col] = xIsNext ? "X" : "O";
     this.setState({
       square: [...squares],
       xIsNext: !xIsNext
     });
-    const winner = this.checkWinner(i);
+    const winner = this.checkWinner(row, col);
     if (winner) {
       className[row][col].isDark = false;
       this.setState({
@@ -400,7 +348,7 @@ export default class Board extends React.Component {
       className[row][col].isWin = true;
       switch (winner.type) {
         case 0:
-          k = col - 1;
+          k = col + 1;
           while (squares[row][k] === squares[row][col] && k < size) {
             className[row][k].isWin = true;
             k += 1;
@@ -460,7 +408,7 @@ export default class Board extends React.Component {
       }
     } else {
       this.setState({
-        status: `Next player: ${xIsNext ? 'O' : 'X'}`,
+        status: `Next player: ${xIsNext ? "O" : "X"}`,
         classNames: [...className],
         preRowDark: { x: row, y: col }
       });
@@ -502,7 +450,7 @@ export default class Board extends React.Component {
             .map(() => ({ isDark: false, isWin: false, isList: false }))
         ),
       xIsNext: true,
-      status: 'Next player: X',
+      status: "Next player: X",
       isWinner: false,
       preRowDark: { x: 0, y: 0 },
       historys: [],
@@ -510,26 +458,9 @@ export default class Board extends React.Component {
     });
   }
 
-  renderSquare(i) {
-    const { square, classNames } = this.state;
-    const { size } = this.props;
-
-    const row = Math.floor(i / size);
-    const col = i % size;
-    return (
-      <Square
-        value={square[row][col]}
-        onClick={() => this.handleClick(i)}
-        key={i}
-        curClick={classNames[row][col].isDark}
-        isWin={classNames[row][col].isWin}
-      />
-    );
-  }
-
   render() {
     const { size } = this.props;
-    const { status, historys, classNames } = this.state;
+    const { status, historys, classNames, square } = this.state;
     // console.log(historys)
     return (
       <div className="game">
@@ -542,7 +473,31 @@ export default class Board extends React.Component {
             Reset
           </button>
           <div className="status">{status}</div>
-          {this.getArray(size)}
+          {Array(size + 1)
+            .fill(null)
+            .map((item, idx) => (
+              <button type="button" className="square" key={String(idx + 1)}>
+                {idx > 0 ? String.fromCharCode(idx + 64) : ""}
+              </button>
+            ))}
+          {square.map((item, index) => {
+            return (
+              <div className="board-row" key={String(index)}>
+                <button type="button" className="square" key={-1}>
+                  {index + 1}
+                </button>
+                {item.map((i, idx) => (
+                  <Square
+                    value={i}
+                    onClick={() => this.handleClick(index, idx)}
+                    key={String(index * size + idx)}
+                    curClick={classNames[index][idx].isDark}
+                    isWin={classNames[index][idx].isWin}
+                  />
+                ))}
+              </div>
+            );
+          })}
         </div>
         <div className="game-info">
           <button
@@ -559,8 +514,8 @@ export default class Board extends React.Component {
                   type="button"
                   className={`btn-list ${
                     classNames[Math.floor(idx / size)][idx % size].isList
-                      ? 'btn-list-clicked'
-                      : ''
+                      ? "btn-list-clicked"
+                      : ""
                   }`}
                   onClick={() => this.clickList(idx)}
                 >
