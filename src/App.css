@@ -104,7 +104,7 @@
 }
 
 .square-click{
-  background: #d4d4dd
+  background: #9191d3
 }
 
 .square-win{
@@ -114,4 +114,9 @@
 
 .status{
   font-size: 30px;
+  color: #00ffd5;
+}
+
+.light{
+  background-color: #eae1f3;
 }
