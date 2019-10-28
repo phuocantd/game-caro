@@ -9,16 +9,17 @@ import {
   resetIsWinner,
   resetPreRowDark,
   changeStatus,
-  changePreRowDark
-} from "../actions/Basic";
+  changePreRowDark,
+  changeXIsNext
+} from "../../actions/Basic";
 import {
   resetSquare,
   changeSquareValue,
   changeSquareIsDark
-} from "../actions/Square";
-import { resetHistory, removeItem } from "../actions/History";
+} from "../../actions/Square";
+import { resetHistory, removeItem } from "../../actions/History";
 
-function Control({ dispatch, history, isWinner }) {
+function Control({ dispatch, history, isWinner, xIsNext }) {
   const reset = () => {
     dispatch(resetStatus());
     dispatch(resetXIsNext());
@@ -34,6 +35,7 @@ function Control({ dispatch, history, isWinner }) {
       return;
     }
 
+    dispatch(changeXIsNext(!xIsNext));
     dispatch(changeSquareValue(history[len - 1].x, history[len - 1].y, null));
     dispatch(changeSquareIsDark(history[len - 1].x, history[len - 1].y, false));
     if (len - 2 >= 0) {
@@ -41,8 +43,10 @@ function Control({ dispatch, history, isWinner }) {
         changeSquareIsDark(history[len - 2].x, history[len - 2].y, true)
       );
       dispatch(changePreRowDark(history[len - 2].x, history[len - 2].y));
+      dispatch(changeStatus(`Next player: ${history[len - 2].player}`));
+    } else {
+      dispatch(changeStatus(`Next player: X`));
     }
-    dispatch(changeStatus(`Next player: ${history[len - 2].player}`));
     dispatch(removeItem(len - 1));
   };
 
@@ -57,6 +61,7 @@ function Control({ dispatch, history, isWinner }) {
 export default connect(state => {
   return {
     history: state.history,
-    isWinner: state.isWinner
+    isWinner: state.isWinner,
+    xIsNext: state.xIsNext
   };
 })(Control);

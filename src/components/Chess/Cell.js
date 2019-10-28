@@ -3,18 +3,18 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addItem } from "../actions/History";
+import { addItem } from "../../actions/History";
 import {
   changeSquareIsDark,
   changeSquareValue,
   changeSquareIsWin
-} from "../actions/Square";
+} from "../../actions/Square";
 import {
   changePreRowDark,
   changeXIsNext,
   changeStatus,
   changeIsWinner
-} from "../actions/Basic";
+} from "../../actions/Basic";
 
 function Cell({ row, col, square, xIsNext, isWinner, preRowDark, dispatch }) {
   const checkRow = () => {
