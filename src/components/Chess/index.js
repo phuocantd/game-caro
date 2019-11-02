@@ -3,17 +3,18 @@ import { connect } from "react-redux";
 import { Layout } from "antd";
 import "antd/dist/antd.css";
 
-import Board from "./Board";
-import Control from "./Control-online";
+import "./index.css";
 
-const { Header, Footer, Sider, Content } = Layout;
+import Board from "./Board";
+import Control from "./Control-offline";
+
+const { Header, Sider, Content } = Layout;
 
 function Chess({ status }) {
-
   return (
     <div>
       <Layout>
-        <Header>
+        <Header style={{ backgroundColor: "rgb(6, 0, 95)" }}>
           <div className="status">{status}</div>
         </Header>
         <Layout>
@@ -28,7 +29,6 @@ function Chess({ status }) {
             </center>
           </Sider>
         </Layout>
-        <Footer>Coppyright by phuocantd</Footer>
       </Layout>
     </div>
   );

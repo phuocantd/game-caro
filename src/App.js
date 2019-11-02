@@ -1,9 +1,34 @@
 import React from "react";
-import Chess from "./components/Chess";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "antd/dist/antd.css";
+
+import Game from "./pages/Game";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages";
+import Layout from "./components/Layout";
 
 function App() {
-  return <Chess size={20} />;
+  return (
+    <Router>
+      <Layout>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/game">
+            <Game />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Layout>
+    </Router>
+  );
 }
 
 export default App;

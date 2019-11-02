@@ -2,7 +2,10 @@ import { combineReducers } from "redux";
 
 import square from "./Square";
 import { status, xIsNext, isWinner, preRowDark } from "./Basic";
-import history from './History'
+import history from './History';
+import user from './User'
+import profile from './Profile'
+import dataQuery from './dataQuery'
 
 const reducers = combineReducers({
   square,
@@ -10,7 +13,10 @@ const reducers = combineReducers({
   xIsNext,
   isWinner,
   preRowDark,
-  history
+  history,
+  user,
+  profile,
+  dataQuery
 });
 
 export default reducers;
