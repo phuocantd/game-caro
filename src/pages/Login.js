@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import Form from "../components/Form-Sign";
+import Form from "../components/WrappedNormalForm";
 import { loginAPI } from "../_functionAPI";
 import setAuthorizationToken from "../_function/SetAuthorizationToken";
 

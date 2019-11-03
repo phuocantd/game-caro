@@ -3,6 +3,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import "./index.css";
 import { addItem } from "../../actions/History";
 import {
   changeSquareIsDark,

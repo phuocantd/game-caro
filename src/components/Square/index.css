@@ -1,0 +1,17 @@
+.tbl-cell {
+    width: 5vh;
+    height: 5vh;
+    border: 1px solid black;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.square-click {
+    background: #9191d3
+}
+
+.square-win {
+    background: chartreuse;
+    font-weight: bold;
+}

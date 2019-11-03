@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Form from "../components/Form-Sign";
+import Form from "../components/WrappedNormalForm";
 import { registerAPI } from "../_functionAPI";
 
 export default function RegisterPage() {

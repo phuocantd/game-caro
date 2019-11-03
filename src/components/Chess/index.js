@@ -5,8 +5,8 @@ import "antd/dist/antd.css";
 
 import "./index.css";
 
-import Board from "./Board";
-import Control from "./Control-offline";
+import Board from "../Board";
+import Control from "../Control";
 
 const { Header, Sider, Content } = Layout;
 

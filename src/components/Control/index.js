@@ -2,8 +2,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Button from "./Button";
-import "./Control-offline.css";
+import Button from "../Button";
+import "./index.css";
 
 import {
   resetStatus,

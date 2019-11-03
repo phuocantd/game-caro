@@ -3,7 +3,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Cell from "./Cell"
+import Cell from "../Square"
+import './index.css'
 
 function Board({ square }) {
   return (
