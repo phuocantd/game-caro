@@ -12,7 +12,7 @@ const statusReducer = (state = "Next player: X", action) => {
 const xIsNextReducer = (state = true, action) => {
   switch (action.type) {
     case "CHANGE_X_IS_NEXT":
-      return action.value;
+      return !state;
     case "RESET_X_IS_NEXT":
       return true;
     default:

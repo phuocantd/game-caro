@@ -17,6 +17,8 @@ class InfiniteListExample extends React.Component {
     };
   }
 
+  handleLoadMore = () => {};
+
   setCurrent = async idx => {
     const { history, isWinner } = this.props;
     const len = history.length;
@@ -36,6 +38,7 @@ class InfiniteListExample extends React.Component {
         <InfiniteScroll
           initialLoad={false}
           pageStart={0}
+          loadMore={() => this.handleLoadMore()}
           hasMore={!loading && hasMore}
           useWindow={false}
         >

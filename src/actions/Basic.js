@@ -2,8 +2,8 @@ function changeStatus(value) {
   return { type: "CHANGE_STATUS", value };
 }
 
-function changeXIsNext(value) {
-  return { type: "CHANGE_X_IS_NEXT", value };
+function changeXIsNext() {
+  return { type: "CHANGE_X_IS_NEXT" };
 }
 
 function changeIsWinner(value) {

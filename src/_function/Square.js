@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { addItem } from "../actions/History";
 import {
   changeSquareIsDark,
@@ -11,6 +12,8 @@ import {
   changeIsWinner
 } from "../actions/Basic";
 import checkWinner from "./Check";
+import { computerClick, getXY } from "./Computer";
+
 import store from "../store";
 
 const { dispatch } = store;
@@ -106,7 +109,7 @@ const clickSquare = (row, col) => {
   // const size = 20;
   const { square, isWinner, xIsNext, preRowDark } = store.getState();
 
-  if (square[row][col].value || isWinner) {
+  if (square[row][col].value || isWinner || !xIsNext) {
     return;
   }
   // them lich su buoc di
@@ -119,7 +122,7 @@ const clickSquare = (row, col) => {
   // thay doi gia tri ban co
   dispatch(changeSquareValue(row, col, xIsNext ? "X" : "O"));
   // thay doi vi tri danh tiep va status
-  dispatch(changeXIsNext(!xIsNext));
+  dispatch(changeXIsNext());
   dispatch(changeStatus(`Next player: ${xIsNext ? "O" : "X"}`));
 
   const winner = checkWinner(row, col);
@@ -128,6 +131,10 @@ const clickSquare = (row, col) => {
     dispatch(changeStatus(`Winner: ${xIsNext ? "X" : "O"}`));
     setBackgroundwin(winner, row, col);
   }
+  setTimeout(() => {
+    const point = getXY();
+    computerClick(point.x, point.y);
+  }, 1000);
 };
 
 export { setBackgroundwin, clickSquare };

@@ -8,9 +8,13 @@ import "./index.css";
 import { clickSquare } from "../../_function/Square";
 
 function Cell({ row, col, square }) {
+  const handleClick = () => {
+    clickSquare(row, col);
+    
+  };
   return (
     <td
-      onClick={() => clickSquare(row, col)}
+      onClick={handleClick}
       className={`tbl-cell ${square[row][col].isDark ? "square-click" : ""} ${
         square[row][col].isWin ? "square-win" : ""
       }`}

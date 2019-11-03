@@ -28,13 +28,13 @@ const reset = () => {
 };
 
 const undo = () => {
-  const { history, isWinner, xIsNext } = store.getState();
+  const { history, isWinner } = store.getState();
   const len = history.length;
   if (len === 0 || isWinner) {
     return;
   }
 
-  dispatch(changeXIsNext(!xIsNext));
+  dispatch(changeXIsNext());
   dispatch(changeSquareValue(history[len - 1].x, history[len - 1].y, null));
   dispatch(changeSquareIsDark(history[len - 1].x, history[len - 1].y, false));
   if (len - 2 >= 0) {
