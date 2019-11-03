@@ -2,81 +2,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import "antd/dist/antd.css";
-import { List, message, Avatar, Button } from "antd";
+import { List, Avatar, Button } from "antd";
 import InfiniteScroll from "react-infinite-scroller";
 
 import "./index.css";
-import {
-  changeStatus,
-  changePreRowDark,
-  changeXIsNext
-} from "../../actions/Basic";
-import { changeSquareValue, changeSquareIsDark } from "../../actions/Square";
-import { removeItem } from "../../actions/History";
+import { undo } from "../../_function/Control";
 
 class InfiniteListExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
       loading: false,
       hasMore: true
     };
   }
-
-  componentDidMount() {
-    this.fetchData(res => {
-      this.setState({
-        data: res.results
-      });
-    });
-  }
-
-  fetchData = () => {};
-
-  handleInfiniteOnLoad = () => {
-    let { data } = this.state;
-    this.setState({
-      loading: true
-    });
-    if (data.length > 14) {
-      message.warning("Infinite List loaded all");
-      this.setState({
-        hasMore: false,
-        loading: false
-      });
-      return;
-    }
-    this.fetchData(res => {
-      data = data.concat(res.results);
-      this.setState({
-        data,
-        loading: false
-      });
-    });
-  };
-
-  undo = () => {
-    const { history, dispatch, isWinner, xIsNext } = this.props;
-    const len = history.length;
-    if (len === 0 || isWinner) {
-      return;
-    }
-
-    dispatch(changeXIsNext(!xIsNext));
-    dispatch(changeSquareValue(history[len - 1].x, history[len - 1].y, null));
-    dispatch(changeSquareIsDark(history[len - 1].x, history[len - 1].y, false));
-    if (len - 2 >= 0) {
-      dispatch(
-        changeSquareIsDark(history[len - 2].x, history[len - 2].y, true)
-      );
-      dispatch(changePreRowDark(history[len - 2].x, history[len - 2].y));
-      dispatch(changeStatus(`Next player: ${history[len - 2].player}`));
-    } else {
-      dispatch(changeStatus(`Next player: X`));
-    }
-    dispatch(removeItem(len - 1));
-  };
 
   setCurrent = async idx => {
     const { history, isWinner } = this.props;
@@ -85,7 +24,7 @@ class InfiniteListExample extends React.Component {
       return;
     }
     for (let i = idx + 1; i < len; i += 1) {
-      await this.undo();
+      await undo();
     }
   };
 
@@ -97,7 +36,6 @@ class InfiniteListExample extends React.Component {
         <InfiniteScroll
           initialLoad={false}
           pageStart={0}
-          loadMore={this.handleInfiniteOnLoad}
           hasMore={!loading && hasMore}
           useWindow={false}
         >
