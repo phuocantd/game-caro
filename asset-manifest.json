@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/game-caro/static/css/main.d5196866.chunk.css",
-    "main.js": "/game-caro/static/js/main.cabeeb6a.chunk.js",
-    "main.js.map": "/game-caro/static/js/main.cabeeb6a.chunk.js.map",
+    "main.js": "/game-caro/static/js/main.36148636.chunk.js",
+    "main.js.map": "/game-caro/static/js/main.36148636.chunk.js.map",
     "runtime-main.js": "/game-caro/static/js/runtime-main.9e2f84a7.js",
     "runtime-main.js.map": "/game-caro/static/js/runtime-main.9e2f84a7.js.map",
     "static/css/2.aa7fcd32.chunk.css": "/game-caro/static/css/2.aa7fcd32.chunk.css",
     "static/js/2.2aa02ed5.chunk.js": "/game-caro/static/js/2.2aa02ed5.chunk.js",
     "static/js/2.2aa02ed5.chunk.js.map": "/game-caro/static/js/2.2aa02ed5.chunk.js.map",
     "index.html": "/game-caro/index.html",
-    "precache-manifest.4bd313981c91ecd307ef484c2a86ba42.js": "/game-caro/precache-manifest.4bd313981c91ecd307ef484c2a86ba42.js",
+    "precache-manifest.274a852a197a689d1f8977b7d0648deb.js": "/game-caro/precache-manifest.274a852a197a689d1f8977b7d0648deb.js",
     "service-worker.js": "/game-caro/service-worker.js",
     "static/css/2.aa7fcd32.chunk.css.map": "/game-caro/static/css/2.aa7fcd32.chunk.css.map",
     "static/css/main.d5196866.chunk.css.map": "/game-caro/static/css/main.d5196866.chunk.css.map"
@@ -19,6 +19,6 @@
     "static/css/2.aa7fcd32.chunk.css",
     "static/js/2.2aa02ed5.chunk.js",
     "static/css/main.d5196866.chunk.css",
-    "static/js/main.cabeeb6a.chunk.js"
+    "static/js/main.36148636.chunk.js"
   ]
 }
