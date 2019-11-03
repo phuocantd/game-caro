@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroller";
 
 import "./index.css";
 import { undo } from "../../_function/Control";
+import { computerClick, getXY } from "../../_function/Computer";
 
 class InfiniteListExample extends React.Component {
   constructor(props) {
@@ -20,13 +21,19 @@ class InfiniteListExample extends React.Component {
   handleLoadMore = () => {};
 
   setCurrent = async idx => {
-    const { history, isWinner } = this.props;
+    const { history, isWinner, xIsNext } = this.props;
     const len = history.length;
     if (len === 0 || isWinner) {
       return;
     }
     for (let i = idx + 1; i < len; i += 1) {
       await undo();
+    }
+    if (xIsNext) {
+      setTimeout(() => {
+        const point = getXY();
+        computerClick(point.x, point.y);
+      }, 1000);
     }
   };
 
