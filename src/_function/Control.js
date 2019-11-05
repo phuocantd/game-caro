@@ -40,9 +40,13 @@ const undo = () => {
   if (len - 2 >= 0) {
     dispatch(changeSquareIsDark(history[len - 2].x, history[len - 2].y, true));
     dispatch(changePreRowDark(history[len - 2].x, history[len - 2].y));
-    dispatch(changeStatus(`Next player: ${history[len - 2].player}`));
+    dispatch(
+      changeStatus(
+        `Next player: ${history[len - 2].player === "X" ? "You" : "Computer"}`
+      )
+    );
   } else {
-    dispatch(changeStatus(`Next player: X`));
+    dispatch(changeStatus(`Next player: You`));
   }
   dispatch(removeItem(len - 1));
 };

@@ -8,13 +8,15 @@ import List from "../List";
 import { reset, undo } from "../../_function/Control";
 import { computerClick, getXY } from "../../_function/Computer";
 
-function Control() {
+function Control({ xIsNext }) {
   const undoGame = () => {
     undo();
-    setTimeout(() => {
-      const point = getXY();
-      computerClick(point.x, point.y);
-    }, 1000);
+    if (xIsNext) {
+      setTimeout(() => {
+        const point = getXY();
+        computerClick(point.x, point.y);
+      }, 1000);
+    }
   };
   return (
     <>

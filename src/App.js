@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
+  useLocation
 } from "react-router-dom";
 import "antd/dist/antd.css";
 
@@ -17,8 +18,26 @@ import Home from "./pages";
 import Error from "./pages/404";
 
 import store from "./store";
+import { getMeAPI } from "./_functionAPI";
+import { changeUserName, changeUserId } from "./actions/User";
+import { changeIsAuthenticate } from "./actions/Basic";
+
+const { dispatch } = store;
 
 function App() {
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken");
+    getMeAPI(token)
+      .then(res => {
+        const { _id, username } = res.data;
+        dispatch(changeUserId(_id));
+        dispatch(changeUserName(username));
+        dispatch(changeIsAuthenticate(true));
+      })
+      .catch(() => {
+        // dispatch(changeIsAuthenticate(false));
+      });
+  });
   return (
     <Router>
       <Layout>
@@ -26,12 +45,12 @@ function App() {
           <PrivateRoute exact path="/">
             <Home />
           </PrivateRoute>
-          <Route exact path="/login">
+          <PublicRoute exact path="/login">
             <Login />
-          </Route>
-          <Route exact path="/register">
+          </PublicRoute>
+          <PublicRoute exact path="/register">
             <Register />
-          </Route>
+          </PublicRoute>
           <PrivateRoute exact path="/game">
             <Game />
           </PrivateRoute>
@@ -56,6 +75,29 @@ function PrivateRoute({ children, ...rest }) {
           <Redirect
             to={{
               pathname: "/login",
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
+  );
+}
+
+function PublicRoute({ children, ...rest }) {
+  const { isAuthenticate } = store.getState();
+  const locations = useLocation();
+  const { from } = locations.state || { from: { pathname: "/" } };
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        !isAuthenticate ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: from.pathname,
               state: { from: location }
             }}
           />

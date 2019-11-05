@@ -11,7 +11,6 @@ import { changeIsAuthenticate } from "../../actions/Basic";
 
 const { Header, Content, Footer } = Layout;
 
-
 function App({ dispatch, isAuthenticate, children }) {
   const defaultSelectedKey = () => {
     const url = window.location.href.split("/");
@@ -31,6 +30,7 @@ function App({ dispatch, isAuthenticate, children }) {
 
   const signOut = () => {
     dispatch(changeIsAuthenticate(false));
+    localStorage.removeItem("jwtToken");
   };
 
   return (

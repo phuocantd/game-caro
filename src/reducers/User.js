@@ -1,10 +1,10 @@
 const initUser = {
   userId: "",
   username: "",
-  password: "",
-  fullname: "",
-  gender: true,
-  address: ""
+//   password: "",
+//   fullname: "",
+//   gender: true,
+//   address: ""
 };
 
 const useReducer = (state = initUser, action) => {

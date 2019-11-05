@@ -1,4 +1,4 @@
-const statusReducer = (state = "Next player: X", action) => {
+const statusReducer = (state = "Next player: You", action) => {
   switch (action.type) {
     case "CHANGE_STATUS":
       return action.value;

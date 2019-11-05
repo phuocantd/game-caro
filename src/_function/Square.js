@@ -123,12 +123,12 @@ const clickSquare = (row, col) => {
   dispatch(changeSquareValue(row, col, xIsNext ? "X" : "O"));
   // thay doi vi tri danh tiep va status
   dispatch(changeXIsNext());
-  dispatch(changeStatus(`Next player: ${xIsNext ? "O" : "X"}`));
+  dispatch(changeStatus(`Next player: ${xIsNext ? "Computer" : "You"}`));
 
   const winner = checkWinner(row, col);
   if (winner) {
     dispatch(changeIsWinner(true));
-    dispatch(changeStatus(`Winner: ${xIsNext ? "X" : "O"}`));
+    dispatch(changeStatus(`Winner: ${xIsNext ? "You" : "Computer"}`));
     setBackgroundwin(winner, row, col);
   }
   setTimeout(() => {
