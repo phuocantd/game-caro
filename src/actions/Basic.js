@@ -30,6 +30,10 @@ function resetPreRowDark() {
   return { type: "RESET_PRE_ROW_DARK" };
 }
 
+function changeIsAuthenticate(value) {
+  return { type: "CHANGE_IS_AUTHENTICATE", value };
+}
+
 module.exports = {
   changeStatus,
   changeXIsNext,
@@ -38,5 +42,6 @@ module.exports = {
   resetStatus,
   resetXIsNext,
   resetIsWinner,
-  resetPreRowDark
+  resetPreRowDark,
+  changeIsAuthenticate
 };

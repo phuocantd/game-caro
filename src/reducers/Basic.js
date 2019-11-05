@@ -42,9 +42,19 @@ const preRowDarkReducer = (state = { x: 0, y: 0 }, action) => {
   }
 };
 
+const isAuthenticateReducer = (state = false, action) => {
+  switch (action.type) {
+    case "CHANGE_IS_AUTHENTICATE":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 module.exports = {
   status: statusReducer,
   xIsNext: xIsNextReducer,
   isWinner: isWinnerReducer,
-  preRowDark: preRowDarkReducer
+  preRowDark: preRowDarkReducer,
+  isAuthenticate: isAuthenticateReducer
 };
