@@ -1,5 +1,13 @@
+const initUser = {
+  userId: "",
+  username: "",
+  password: "",
+  fullname: "",
+  gender: true,
+  address: ""
+};
 
-const useReducer = (state = {}, action) => {
+const useReducer = (state = initUser, action) => {
   switch (action.type) {
     case "CHANGE_USER_ID":
       return { ...state, userId: action.userId };

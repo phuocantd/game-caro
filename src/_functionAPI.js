@@ -1,21 +1,21 @@
 const axios = require("axios");
 
 function loginAPI(username, password) {
-  return axios.post(`http://localhost:3000/user/login`, {
+  return axios.post(`https://rest-api-1612009.herokuapp.com/user/login`, {
     username,
     password
   });
 }
 
 function registerAPI(username, password) {
-  return axios.post(`http://localhost:3000/user/register`, {
+  return axios.post(`https://rest-api-1612009.herokuapp.com/user/register`, {
     username,
     password
   });
 }
 
 function getMeAPI(token) {
-  return axios.get(`http://localhost:3000/me`, {
+  return axios.get(`https://rest-api-1612009.herokuapp.com/me`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
