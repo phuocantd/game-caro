@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "925aa3802deddb3faa4b08d9406db2f0",
+    "revision": "87fcb52ed90e4e2204622109da4fa4e1",
     "url": "/game-caro/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/game-caro/static/css/2.aa7fcd32.chunk.css"
   },
   {
-    "revision": "cf53b4d3d7644f97dc34",
+    "revision": "8d256536166f6754e268",
     "url": "/game-caro/static/css/main.3ef468bc.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/game-caro/static/js/2.68e7e615.chunk.js"
   },
   {
-    "revision": "cf53b4d3d7644f97dc34",
-    "url": "/game-caro/static/js/main.baac494f.chunk.js"
+    "revision": "8d256536166f6754e268",
+    "url": "/game-caro/static/js/main.895cb39e.chunk.js"
   },
   {
     "revision": "ad53c0128a0693d9fce7",
