@@ -44,16 +44,16 @@ function App({ dispatch, isAuthenticate, children }) {
             style={{ lineHeight: "64px" }}
           >
             <Menu.Item key="1">
-              <Link to="/">Home</Link>
+              <Link to="/game-caro/">Home</Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/login">Login</Link>
+              <Link to="/game-caro/login">Login</Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/register">Register</Link>
+              <Link to="/game-caro/register">Register</Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <Link to="/game">Game</Link>
+              <Link to="/game-caro/game">Game</Link>
             </Menu.Item>
             {isAuthenticate && (
               <span

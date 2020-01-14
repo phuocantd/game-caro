@@ -42,16 +42,16 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          <PrivateRoute exact path="/">
+          <PrivateRoute exact path="/game-caro">
             <Home />
           </PrivateRoute>
-          <PublicRoute exact path="/login">
+          <PublicRoute exact path="/game-caro/login">
             <Login />
           </PublicRoute>
-          <PublicRoute exact path="/register">
+          <PublicRoute exact path="/game-caro/register">
             <Register />
           </PublicRoute>
-          <PrivateRoute exact path="/game">
+          <PrivateRoute exact path="/game-caro/game">
             <Game />
           </PrivateRoute>
           <Route component={Error} />
