@@ -5,7 +5,7 @@
   "dependencies": {
     "antd": "^3.24.2",
     "axios": "^0.21.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-infinite-scroll-component": "^4.5.3",
