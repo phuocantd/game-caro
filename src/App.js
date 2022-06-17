@@ -35,6 +35,7 @@ function App() {
         dispatch(changeIsAuthenticate(true));
       })
       .catch(() => {
+        // Alo?
         // dispatch(changeIsAuthenticate(false));
       });
   });
